@@ -1,59 +1,99 @@
-SMART INDIA HACKATHON WORKSHOP
-NAME : monisha.A.K
-REGISTER NUMBER : 212225230187
-DATE : 26/10/2026
-PROBLEM STATEMENT :
+# Smart India Hackathon Workshop
+# Date: 26-10-2026
+## Register Number: 212225230187
+## Name: MONISHA.A.K
+## Problem Title
 SIH 1710: Enhancing Navigation for Railway Station Facilities and Locations
-
-PROBLEM DESCRIPTION :
+## Problem Description
 Background: Railway stations are complex environments with numerous facilities and locations such as ticket counters, platforms, restrooms, food courts, and waiting areas. Passengers often face difficulties in navigating these spaces, especially in large or unfamiliar stations. Efficient and user-friendly navigation systems are crucial for improving passenger experience, reducing congestion, and ensuring timely travel connections. Description: The problem involves developing a comprehensive navigation solution for railway stations that assists passengers in locating various facilities and destinations within the station premises. This includes creating detailed maps, providing real-time directions, and integrating features such as accessibility options for individuals with disabilities. The solution should be intuitive, easy to use, and accessible via multiple platforms, including mobile devices and digital kiosks. Key challenges include updating navigation information in real-time, ensuring accuracy, and accommodating the diverse needs of all passengers. Expected Solution: The expected solution is a multi-platform navigation system that provides detailed, real-time directions to all facilities and locations within a railway station. This system should include: A mobile application with 3D interactive maps and step-by-step navigation. Digital kiosks located throughout the station with touch-screen interfaces. Voice-guided navigation for visually impaired passengers. Regular updates to reflect changes in station layout and facility locations. Integration with existing railway apps and services for seamless user experience. The solution should enhance the overall passenger experience by reducing confusion, saving time, and improving accessibility within the station.
 
-PROBLEM CREATER'S ORGANISATION :
+## Problem Creater's Organization
 Ministry of Railway
 
-IDEA :
-RailPath is a digital-twin-based station navigator that shows passengers the best route right now, not just the shortest path. It combines four things:
+## Idea
 
-Train awareness: the passenger enters a PNR or train number, and the app guides them to the platform and their coach position, with a “Time-to-Board” countdown.
-Crowd awareness: routes avoid congested gates and footbridges using count-only data from CCTV and Wi-Fi/BLE signals.
-Personal needs: wheelchair, elderly, heavy luggage, family with kids, and visually impaired profiles each get suitable routes (ramps, lifts, tactile paths).
-Live updates: platform changes, lift outages, and closures reroute every affected user instantly.
-PROPOSED SOLUTION / ARCHITECTURE DIAGRAM :
-Layers
-User interfaces: mobile app, PWA opened via QR code, kiosk UI, voice and haptic interface
-API gateway: authentication, rate limiting, language routing
-Core services:
-Routing Engine: A*/Dijkstra with edge cost = distance + crowd penalty + accessibility penalty + time-pressure factor
-Positioning Service: BLE + Wi-Fi + pedestrian dead reckoning + QR anchors
-Crowd Analytics Service: edge-based people counting per zone
-Train Info Service: NTES/IRCTC feeds for status, platform, and coach position
-Digital twin data layer: station graph, POI database, live status cache, event stream
-Station admin console: map editor, closures, lift status, announcements, heatmaps, audit logs
-RailPath Architecture Diagram
 
-USE CASES :
-First-time traveller: enters a PNR and is guided from the entrance to the platform and coach position.
-Wheelchair user: gets a ramp- and lift-only route with live lift status.
-Visually impaired passenger: receives voice and haptic turn-by-turn guidance to the restroom, with an assistance button.
-Late passenger: “Fast mode” gives the quickest route and warns if boarding is risky.
-Platform change: the user gets an instant alert and an automatic reroute.
-Elderly passenger with luggage: is routed via lifts or battery car, with an option to book a porter.
-Festival rush: alternate gates are suggested and crowd heat is shown.
-Emergency: evacuation routes avoid blocked and crowded zones.
-Station staff: mark a lift as out of service, and routes update everywhere instantly.
-Non-app user: scans a QR code on a kiosk or signboard and uses the web app.
-Railway authorities: use heatmaps and dwell-time analytics to improve layout and signage.
-TECHNOLOGY STACK:
-RailPath Technology Stack
+To develop **RailNav – Smart Railway Station Navigation System**, a user-friendly mobile application and digital kiosk system that helps passengers navigate railway stations easily. It provides interactive maps, real-time directions, voice assistance, multilingual support, and wheelchair-accessible routes to locate platforms and essential facilities.
 
-DEPENDENCIES :
-Data
-Station floor plans (CAD/PDF/BIM) from the railway authority
-Live train data feeds (NTES, IRCTC) for status, platform, and coach position
-Facility inventory (lifts, escalators, restrooms, food stalls)
-Hardware
-BLE beacons (roughly one per 10-15 m in key zones)
-CCTV cameras with edge compute devices
-Weatherproof, accessible touch-screen kiosks
-Station Wi-Fi infrastructure
-Tactile paving (mapped where available)
+## Proposed Solution / Architecture Diagram
+
+**Proposed Solution:**
+
+RailNav allows passengers to search for destinations such as platforms, ticket counters, restrooms, food courts, waiting halls, lifts, and exits. It provides step-by-step directions through interactive maps and voice guidance. QR codes or indoor positioning technologies can help identify passenger locations. An administrator dashboard enables updates to station maps, facility locations, and temporary route changes.
+
+**Architecture Diagram:**
+
+```text
+     Passenger / User
+            |
+            v
+ +----------------------+
+ | Mobile App / Kiosk   |
+ +----------------------+
+            |
+            v
+ +----------------------+
+ | Search & Map Interface|
+ +----------------------+
+            |
+            v
+ +----------------------+
+ | Navigation Engine    |
+ | Route Calculation    |
+ +----------------------+
+            |
+            v
+ +----------------------+
+ | Backend Server / API |
+ +----------------------+
+            |
+            v
+ +----------------------+
+ | Station Database     |
+ | Maps & Facilities    |
+ +----------------------+
+            |
+            v
+ +----------------------+
+ | Admin Dashboard      |
+ | Map & Route Updates  |
+ +----------------------+
+```
+
+## Use Cases
+
+1. Helps passengers find platforms, ticket counters, restrooms, food courts, and waiting areas.
+2. Provides step-by-step navigation within railway stations.
+3. Offers voice-guided directions for visually impaired passengers.
+4. Suggests wheelchair-accessible routes using ramps and lifts.
+5. Supports multiple languages for better accessibility.
+6. Provides digital kiosk navigation for passengers without smartphones.
+7. Updates facility locations and temporary route changes.
+8. Helps passengers locate exits and connecting platforms quickly.
+
+## Technology Stack
+
+- **Frontend:** Flutter for mobile applications and React.js for the web interface.
+- **Backend:** Python with FastAPI.
+- **Database:** PostgreSQL with PostGIS.
+- **Mapping:** OpenStreetMap and Leaflet.
+- **Indoor Navigation:** QR codes, Bluetooth beacons, or Wi-Fi positioning.
+- **Voice Assistance:** Text-to-Speech (TTS).
+- **APIs:** REST APIs.
+- **Tools:** Git and GitHub.
+- **Hosting:** Cloud server.
+
+## Dependencies
+
+1. Accurate digital maps of railway stations.
+2. Updated information about platforms and facilities.
+3. Internet connectivity for map synchronization and live updates.
+4. QR codes or indoor positioning infrastructure.
+5. Backend server and database.
+6. Text-to-Speech services for voice guidance.
+7. Touch-screen digital kiosks.
+8. Railway administration support for map verification and updates.
+9. Integration with railway apps and services, subject to API availability.
+10. Testing with passengers, including people with disabilities.
+
+**Expected Outcome:** The system will improve passenger navigation, reduce confusion and travel time within railway stations, and provide a more accessible and convenient travel experience.
